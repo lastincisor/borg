@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="debug">
+
+    <appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %t [%p] %c{10} (%F:%L) %msg%n"/>
+        </Console>
+    </appenders>
+
+    <loggers>
+        <logger name="com.sankuai.meituan.org" level="debug"/>
+        <logger name="org.test.demo" level="debug"/>
+        <root level="info">
+            <appender-ref ref="console"/>
+        </root>
+    </loggers>
+</configuration>
