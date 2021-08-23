@@ -19,7 +19,7 @@ public class Sorter {
         long start = System.currentTimeMillis();
         Integer[] sortArray = strategy.execute(array);
         long end = System.currentTimeMillis();
-        log.info("Sorter {} run use time {}", strategy.getClass().getName(), end-start);
+        log.info("Sorter usetime {} from {}", end-start, strategy.getClass().getName());
         return sortArray;
     }
 }
