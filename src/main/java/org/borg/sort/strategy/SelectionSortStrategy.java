@@ -1,4 +1,7 @@
-package org.sort.impl;
+package org.borg.sort.strategy;
+
+import org.borg.sort.SortStrategy;
+import org.sort.impl.SortFacade;
 
 /**
  * 表现最稳定的排序算法之一，因为无论什么数据进去都是O(n2)的时间复杂度，所以用到它的时候，
@@ -20,15 +23,11 @@ package org.sort.impl;
  *
  * 最佳情况：T(n) = O(n2)  最差情况：T(n) = O(n2)  平均情况：T(n) = O(n2)
  */
-public class SelectionSort extends SortFacade {
-
-    public SelectionSort() {
-        super.name = SelectionSort.class.getName();
-    }
+public class SelectionSortStrategy implements SortStrategy {
 
 
     @Override
-    public Integer[] sort(Integer[] array) {
+    public Integer[] execute(Integer[] array) {
         if (array.length == 0){
             return array;
         }

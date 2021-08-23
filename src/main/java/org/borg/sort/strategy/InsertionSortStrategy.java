@@ -1,4 +1,7 @@
-package org.sort.impl;
+package org.borg.sort.strategy;
+
+import org.borg.sort.SortStrategy;
+import org.sort.impl.SortFacade;
 
 /**
  * 插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，
@@ -17,14 +20,11 @@ package org.sort.impl;
  *
  * 最佳情况：T(n) = O(n)   最坏情况：T(n) = O(n2)   平均情况：T(n) = O(n2)
  */
-public class InsertionSort extends SortFacade{
+public class InsertionSortStrategy implements SortStrategy {
 
-    public InsertionSort() {
-        super.name = InsertionSort.class.getName();
-    }
 
     @Override
-    public Integer[] sort(Integer[] array) {
+    public Integer[] execute(Integer[] array) {
         if (array.length == 0){
             return array;
         }

@@ -1,4 +1,6 @@
-package org.sort.impl;
+package org.borg.sort.strategy;
+
+import org.borg.sort.SortStrategy;
 
 /**
  * 冒泡排序
@@ -15,14 +17,10 @@ package org.sort.impl;
  *
  * 最佳情况：T(n) = O(n)   最差情况：T(n) = O(n2)   平均情况：T(n) = O(n2)
  */
-public class BubbleSort extends SortFacade{
-
-    public BubbleSort() {
-        super.name = BubbleSort.class.getName();
-    }
+public class BubbleSortStrategy implements SortStrategy {
 
     @Override
-    public Integer[] sort(Integer[] array){
+    public Integer[] execute(Integer[] array) {
         if (array.length == 0){
             return array;
         }
@@ -37,7 +35,4 @@ public class BubbleSort extends SortFacade{
         }
         return array;
     }
-
-
-
 }
