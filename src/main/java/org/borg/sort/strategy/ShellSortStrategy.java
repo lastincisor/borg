@@ -1,7 +1,6 @@
 package org.borg.sort.strategy;
 
 import org.borg.sort.SortStrategy;
-import org.sort.impl.SortFacade;
 
 /**
  * 希尔排序是希尔（Donald Shell）于1959年提出的一种排序算法。希尔排序也是一种插入排序，

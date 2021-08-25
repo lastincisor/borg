@@ -1,7 +1,6 @@
 package org.borg.sort.strategy;
 
 import org.borg.sort.SortStrategy;
-import org.sort.impl.SortFacade;
 
 /**
  * 快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，
@@ -28,10 +27,12 @@ public class QuickSortStrategy implements SortStrategy {
     public Integer[] quickSort(Integer[] array, int start, int end) {
         if (array.length < 1 || start < 0 || end >= array.length || start > end) return null;
         int smallIndex = partition(array, start, end);
-        if (smallIndex > start)
+        if (smallIndex > start){
             quickSort(array, start, smallIndex - 1);
-        if (smallIndex < end)
+        }
+        if (smallIndex < end){
             quickSort(array, smallIndex + 1, end);
+        }
         return array;
     }
 

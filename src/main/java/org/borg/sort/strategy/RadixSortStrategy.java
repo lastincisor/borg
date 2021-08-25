@@ -1,7 +1,6 @@
 package org.borg.sort.strategy;
 
 import org.borg.sort.SortStrategy;
-import org.sort.impl.SortFacade;
 
 import java.util.ArrayList;
 

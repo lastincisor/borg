@@ -1,7 +1,6 @@
 package org.borg.sort.strategy;
 
 import org.borg.sort.SortStrategy;
-import org.sort.impl.SortFacade;
 
 /**
  * 插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，
