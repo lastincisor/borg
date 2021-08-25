@@ -18,15 +18,14 @@ public class App {
     public static void main(String[] args) {
         Integer[] sourceArray = Data.copy(array);
         sorter.sortRun(sourceArray);
-
-        run(new SelectionSortStrategy());
-        run(new InsertionSortStrategy());
-        run(new ShellSortStrategy());
-        run(new MergeSortStrategy());
-        run(new HeapSortStrategy());
-        run(new CountingSortStrategy());
-        run(new BucketSortStrategy());
-        run(new RadixSortStrategy());
+        run(SortFactory.getSort(SortType.SELECTION));
+        run(SortFactory.getSort(SortType.INSERTION));
+        run(SortFactory.getSort(SortType.SHELL));
+        run(SortFactory.getSort(SortType.MERGE));
+        run(SortFactory.getSort(SortType.HEAP));
+        run(SortFactory.getSort(SortType.COUNTING));
+        run(SortFactory.getSort(SortType.BUCKET));
+        run(SortFactory.getSort(SortType.RADIX));
 
         /**
          * QuickSortStrategy
@@ -38,9 +37,9 @@ public class App {
          * 快速排序(双轴)、
          *
          * ***/
-        run(new QuickSortStrategy());
-        run(new QuickSortDualPivotStrategy());
-        run(new QuickSortMultikeyStrategy());
+        run(SortFactory.getSort(SortType.QS));
+        run(SortFactory.getSort(SortType.QS_DP));
+        run(SortFactory.getSort(SortType.QS_MK));
 
     }
 }
