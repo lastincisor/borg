@@ -30,6 +30,13 @@ public class App {
 
         /**
          * QuickSortStrategy
+         *
+         * 快速排序(逆序)、
+         * 快速排序(有序)、
+         * 快速排序(三分法逆序)、
+         * 快速排序(三分法有序)、
+         * 快速排序(双轴)、
+         *
          * ***/
         run(new QuickSortStrategy());
         run(new QuickSortDualPivotStrategy());
