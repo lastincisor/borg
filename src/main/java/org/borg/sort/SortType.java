@@ -16,12 +16,24 @@ public enum SortType {
     HEAP(HeapSortStrategy::new),
     INSERTION(InsertionSortStrategy::new),
     MERGE(MergeSortStrategy::new),
+    RADIX(RadixSortStrategy::new),
+    SELECTION(SelectionSortStrategy::new),
+    SHELL(ShellSortStrategy::new),
+    /**
+    * QuickSortStrategy
+    *
+    * 快速排序(逆序)、
+    * 快速排序(有序)、
+    * 快速排序(三分法逆序)、
+    * 快速排序(三分法有序)、
+    * 快速排序(双轴)、
+    *
+    * ***/
     QS_DP(QuickSortDualPivotStrategy::new),
     QS_MK(QuickSortMultikeyStrategy::new),
     QS(QuickSortStrategy::new),
-    RADIX(RadixSortStrategy::new),
-    SELECTION(SelectionSortStrategy::new),
-    SHELL(ShellSortStrategy::new);
+    QS_ASC(QuickSortAscStrategy::new);
 
     private final Supplier<SortStrategy> constructor;
+
 }

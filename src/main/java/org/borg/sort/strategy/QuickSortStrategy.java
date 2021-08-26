@@ -1,5 +1,6 @@
 package org.borg.sort.strategy;
 
+import org.borg.data.Data;
 import org.borg.sort.SortStrategy;
 
 /**
@@ -46,25 +47,16 @@ public class QuickSortStrategy implements SortStrategy {
     public int partition(Integer[] array, int start, int end) {
         int pivot = (int) (start + Math.random() * (end - start + 1));
         int smallIndex = start - 1;
-        swap(array, pivot, end);
-        for (int i = start; i <= end; i++)
+        Data.swap(array, pivot, end);
+        for (int i = start; i <= end; i++){
             if (array[i] <= array[end]) {
                 smallIndex++;
-                if (i > smallIndex)
-                    swap(array, i, smallIndex);
+                if (i > smallIndex){
+                    Data.swap(array, i, smallIndex);
+                }
             }
+        }
         return smallIndex;
     }
 
-    /**
-     * 交换数组内两个元素
-     * @param array
-     * @param i
-     * @param j
-     */
-    public void swap(Integer[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
 }

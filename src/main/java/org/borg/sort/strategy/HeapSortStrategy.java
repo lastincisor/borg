@@ -1,5 +1,6 @@
 package org.borg.sort.strategy;
 
+import org.borg.data.Data;
 import org.borg.sort.SortStrategy;
 
 /**
@@ -31,7 +32,7 @@ public class HeapSortStrategy implements SortStrategy {
         }
         //2.调整堆结构+交换堆顶元素与末尾元素
         for(int j=array.length-1;j>0;j--){
-            swap(array,0,j);//将堆顶元素与末尾元素进行交换
+            Data.swap(array,0,j);//将堆顶元素与末尾元素进行交换
             adjustHeap(array,0,j);//重新对堆进行调整
         }
         return array;
@@ -59,15 +60,4 @@ public class HeapSortStrategy implements SortStrategy {
         arr[i] = temp;//将temp值放到最终的位置
     }
 
-    /**
-     * 交换元素
-     * @param arr
-     * @param a
-     * @param b
-     */
-    public static void swap(Integer []arr,int a ,int b){
-        int temp=arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
-    }
 }

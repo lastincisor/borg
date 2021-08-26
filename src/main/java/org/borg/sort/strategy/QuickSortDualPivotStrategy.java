@@ -1,5 +1,6 @@
 package org.borg.sort.strategy;
 
+import org.borg.data.Data;
 import org.borg.sort.SortStrategy;
 
 /**
@@ -40,7 +41,7 @@ public class QuickSortDualPivotStrategy implements SortStrategy {
             return arr;//参数不对直接返回
         }
         if(arr[start]>arr[end])
-            swap(arr, start, end);
+            Data.swap(arr, start, end);
         int pivot1=arr[start],pivot2=arr[end];//储存最左侧和最右侧的值
         //(start，left]:左侧小于等于pivot1 [right,end)大于pivot2
         int left=start,right=end,k=left+1;
@@ -49,7 +50,7 @@ public class QuickSortDualPivotStrategy implements SortStrategy {
             if(arr[k]<=pivot1)
             {
                 //需要交换
-                swap(arr, ++left, k++);
+                Data.swap(arr, ++left, k++);
             }
             else if (arr[k]<=pivot2) {//在中间的情况
                 k++;
@@ -61,11 +62,11 @@ public class QuickSortDualPivotStrategy implements SortStrategy {
                         break ;
                 }
                 if(k>=right)break ;
-                swap(arr, k, right);
+                Data.swap(arr, k, right);
             }
         }
-        swap(arr, start, left);
-        swap(arr, end, right);
+        Data.swap(arr, start, left);
+        Data.swap(arr, end, right);
         quickSortDualPivot(arr, start, left-1);
         quickSortDualPivot(arr, left+1, right-1);
         quickSortDualPivot(arr, right+1, end);
@@ -73,15 +74,4 @@ public class QuickSortDualPivotStrategy implements SortStrategy {
     }
 
 
-    /**
-     * 交换数组内两个元素
-     * @param array
-     * @param i
-     * @param j
-     */
-    public void swap(Integer[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
 }
