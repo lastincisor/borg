@@ -25,5 +25,7 @@ public class App {
 //        }
        // Data.log(run(SortFactory.getSort(SortType.QS)));
         Data.log(run(SortFactory.getSort(SortType.QS_ASC)));
+        Data.log(run(SortFactory.getSort(SortType.QS_DESC)));
+
     }
 }
