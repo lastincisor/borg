@@ -34,7 +34,8 @@ public enum SortType {
     QS(QuickSortStrategy::new),
     QS_ASC(QuickSortAscStrategy::new),
     QS_DESC(QuickSortDescStrategy::new),
-    QS_2WAY(QuickSort2WaysStrategy::new);
+    QS_2WAY(QuickSort2WaysStrategy::new),
+    QS_3WAY(QuickSort3WaysStrategy::new);
 
     private final Supplier<SortStrategy> constructor;
 

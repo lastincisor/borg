@@ -32,6 +32,13 @@ public class QuickSort2WaysStrategy implements SortStrategy {
         sort(arr, p+1, r);
     }
 
+    public static void main(String[] args) {
+        int r = 1000000-1;
+        int l = 1;
+        int pivot = (int)(Math.random()*(r-l+1))+l;
+        System.out.println(pivot);
+    }
+
     //核心代码---开始
     private int partition(Integer[] arr, int l, int r){
         // 随机在arr[l...r]的范围中, 选择一个数值作为标定点pivot
@@ -40,12 +47,15 @@ public class QuickSort2WaysStrategy implements SortStrategy {
         // arr[l+1...i) <= v; arr(j...r] >= v
         int i = l+1, j = r;
         while( true ){
-            while( i <= r && arr[i].compareTo(v) < 0 )
+            while( i <= r && arr[i].compareTo(v) < 0 ){
                 i ++;
-            while( j >= l+1 && arr[j].compareTo(v) > 0 )
+            }
+            while( j >= l+1 && arr[j].compareTo(v) > 0 ){
                 j --;
-            if( i > j )
+            }
+            if( i > j ){
                 break;
+            }
             Data.swap( arr, i, j );
             i ++;
             j --;
