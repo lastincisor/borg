@@ -23,6 +23,7 @@ public class SortTest {
        // Data.log(run(SortFactory.getSort(SortType.QS)));
         Data.log(run(SortFactory.getSort(SortType.QS_ASC)));
         Data.log(run(SortFactory.getSort(SortType.QS_DESC)));
+        Data.log(run(SortFactory.getSort(SortType.QS_2WAY)));
 
     }
 }
