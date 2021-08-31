@@ -10,11 +10,23 @@ import java.util.function.Supplier;
 @Getter
 public enum SortType {
 
+    /**
+     * 冒泡排序
+     * 鸡尾酒排序
+     * **/
     BUBBLE(BubbleSortStrategy::new),
+    COCKTAIL(CocktailSortStrategy::new),
+
     BUCKET(BucketSortStrategy::new),
     COUNTING(CountingSortStrategy::new),
     HEAP(HeapSortStrategy::new),
-    INSERTION(InsertionSortStrategy::new),
+    /**
+     * InsertionSortStrategy
+     * 直接插入排序法
+     * 折半插入排序
+     * ***/
+    INSERT(InsertionSortStrategy::new),
+    INSERT_BIN(InsertionSortBinaryStrategy::new),
     MERGE(MergeSortStrategy::new),
     RADIX(RadixSortStrategy::new),
     SELECTION(SelectionSortStrategy::new),

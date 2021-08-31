@@ -1,5 +1,6 @@
 package org.borg.sort.strategy;
 
+import org.borg.data.Data;
 import org.borg.sort.SortStrategy;
 
 /**
@@ -27,6 +28,10 @@ public class InsertionSortStrategy implements SortStrategy {
         if (array.length == 0){
             return array;
         }
+        return sort1(array);
+    }
+
+    public Integer[] sort1(Integer[] array){
         int current;
         for (int i = 0; i < array.length - 1; i++) {
             current = array[i + 1];
@@ -39,4 +44,22 @@ public class InsertionSortStrategy implements SortStrategy {
         }
         return array;
     }
+
+    //核心代码---开始
+    public Integer[] sort(Integer[] array){
+        int n = array.length;
+        for (int i = 0; i < n; i++) {
+            // 寻找元素 arr[i] 合适的插入位置
+            for (int j = i; j > 0; j--){
+                if (array[j].compareTo(array[j - 1]) < 0) {
+                    Data.swap(array, j, j - 1);
+                } else {
+                    break;
+                }
+            }
+        }
+        return array;
+    }
+
+
 }
