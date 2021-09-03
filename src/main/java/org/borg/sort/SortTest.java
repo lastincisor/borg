@@ -34,7 +34,14 @@ public class SortTest {
 
     public static void cocktailSort() {
         run(SortFactory.getSort(SortType.COCKTAIL),true);
+        run(SortFactory.getSort(SortType.GNOME),true);
     }
+
+    public static void combSort() {
+        run(SortFactory.getSort(SortType.COMB),true);
+        run(SortFactory.getSort(SortType.CYCLE),true);
+    }
+
 
     public static void main(String[] args) {
         Integer[] sourceArray = Data.copy(array);
@@ -42,6 +49,7 @@ public class SortTest {
 
         //qsSort();
         //insertSort();
-        cocktailSort();
+        //cocktailSort();
+        combSort();
     }
 }

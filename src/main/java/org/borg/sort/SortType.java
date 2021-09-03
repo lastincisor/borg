@@ -13,9 +13,21 @@ public enum SortType {
     /**
      * 冒泡排序
      * 鸡尾酒排序
+     * 地精排序
      * **/
     BUBBLE(BubbleSortStrategy::new),
     COCKTAIL(CocktailSortStrategy::new),
+    GNOME(GnomeSortStrategy::new),
+
+    /**
+     * 梳排序
+     * **/
+    COMB(CombSortStrategy::new),
+
+    /**
+     * 圈排序
+     * **/
+    CYCLE(CycleSortStrategy::new),
 
     BUCKET(BucketSortStrategy::new),
     COUNTING(CountingSortStrategy::new),
