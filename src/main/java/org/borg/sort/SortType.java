@@ -29,6 +29,11 @@ public enum SortType {
      * **/
     CYCLE(CycleSortStrategy::new),
 
+    /**
+     * 煎饼排序
+     * **/
+    PANCAKE(PancakeSortStrategy::new),
+
     BUCKET(BucketSortStrategy::new),
     COUNTING(CountingSortStrategy::new),
     HEAP(HeapSortStrategy::new),
@@ -40,7 +45,7 @@ public enum SortType {
     INSERT(InsertionSortStrategy::new),
     INSERT_BIN(InsertionSortBinaryStrategy::new),
     MERGE(MergeSortStrategy::new),
-    RADIX(RadixSortStrategy::new),
+
     SELECTION(SelectionSortStrategy::new),
     SHELL(ShellSortStrategy::new),
     /**
@@ -59,7 +64,10 @@ public enum SortType {
     QS_ASC(QuickSortAscStrategy::new),
     QS_DESC(QuickSortDescStrategy::new),
     QS_2WAY(QuickSort2WaysStrategy::new),
-    QS_3WAY(QuickSort3WaysStrategy::new);
+    QS_3WAY(QuickSort3WaysStrategy::new),
+
+    MSD(RadixMsdSortStrategy::new),
+    LSD(RadixSortStrategy::new);
 
     private final Supplier<SortStrategy> constructor;
 

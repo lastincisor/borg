@@ -32,3 +32,4 @@ borg sort
 ###计数排序
 ###Tim Sort
 ###Block Merge Sort(WikiSort)
+###Pancake sort煎饼排序

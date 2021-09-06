@@ -42,6 +42,15 @@ public class SortTest {
         run(SortFactory.getSort(SortType.CYCLE),true);
     }
 
+    public static void pancakeSort() {
+        run(SortFactory.getSort(SortType.PANCAKE),true);
+    }
+
+    public static void radixSort() {
+        run(SortFactory.getSort(SortType.MSD),true);
+        run(SortFactory.getSort(SortType.LSD),true);
+    }
+
 
     public static void main(String[] args) {
         Integer[] sourceArray = Data.copy(array);
@@ -50,6 +59,8 @@ public class SortTest {
         //qsSort();
         //insertSort();
         //cocktailSort();
-        combSort();
+        //combSort();
+        //pancakeSort();
+        radixSort();
     }
 }
