@@ -3,6 +3,7 @@ package org.borg.sort.strategy;
 import org.borg.sort.SortStrategy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 基数排序也是非比较的排序算法，对每一位进行排序，从最低位开始排序，复杂度为O(kn),为数组长度，
@@ -36,9 +37,10 @@ public class RadixSortStrategy implements SortStrategy {
             maxDigit++;
         }
         int mod = 10, div = 1;
-        ArrayList<ArrayList<Integer>> bucketList = new ArrayList<ArrayList<Integer>>();
-        for (int i = 0; i < 10; i++)
+        List<List<Integer>> bucketList = new ArrayList<>();
+        for (int i = 0; i < 10; i++){
             bucketList.add(new ArrayList<Integer>());
+        }
         for (int i = 0; i < maxDigit; i++, mod *= 10, div *= 10) {
             for (int j = 0; j < array.length; j++) {
                 int num = (array[j] % mod) / div;

@@ -3,6 +3,7 @@ package org.borg.sort.strategy;
 import org.borg.sort.SortStrategy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 基数排序(Radix Sorting)是桶排序的扩展。
@@ -29,36 +30,83 @@ public class RadixMsdSortStrategy implements SortStrategy {
         if (array == null || array.length < 2){
             return array;
         }
-        sort(array, array.length);
+        msdSort(array);
         return array;
     }
 
-    public Integer[] sort(Integer[] array, int n){
-        int max = array[0];
-        for(int i = 1 ;i < n;i++){
-            if(max < array[i])
-                max = array[i];
+    public Integer[] sort(Integer[] array){
+        /** step1:确定排序的趟数*/
+        int max=array[0];
+        for(int i=1;i<array.length;i++) {
+            if(array[i]>max) {
+                max=array[i];
+            }
+
         }
-        int maxL = String.valueOf(max).length();  //获取数组中最长元素长度
+        /** step2:判断位数*/
+        int digit = 0;
+        while(max > 0) {
+            max/=10;
+            digit++;
+        }
+        /**初始化一个二维数组，相当于二维数组，可以把重复的存进去*/
+        List<List<Integer>> temp = new ArrayList<>();
+        for(int i = 0;i < 10;i++) {
+            temp.add(new ArrayList<Integer>());
+        }
+        /**开始合并收集*/
+        for(int i = 0; i < digit; i++) {
+            /** 对每一位进行排序 */
+            for(int j = 0; j < array.length; j++) {
+                /**求每一个数的第i位的数，然后存到相对应的数组中*/
+                int digitInx = array[j]%(int)Math.pow(10, i + 1)/(int)Math.pow(10, i);
+                List<Integer> tempInside = temp.get(digitInx);
+                tempInside.add(array[j]);
+                temp.set(digitInx,tempInside );
+            }
+            int count = array.length - 1;
+            for(int k = 0;k < 10;k++) {
+                for(;temp.get(k).size()>0;count--) {
+                    List<Integer> temp2 = temp.get(k);
+                    array[count] = temp2.get(0);
+                    temp2.remove(0);
+                }
+            }
+        }
 
-        int k = new Double(Math.pow(10, maxL - 1)).intValue();
-        int[][] t = new int[10][n];  //桶
-        int[] num = new int[n];      //记录每个桶中存入数的个数
+        return array;
+    }
 
-        for(int a : array){              //按最高位入桶
-            int m = (a / k) % 10;
+    public Integer[] msdSort(Integer[] array){
+        int len = array.length;
+        // 取数组中最大值
+        int max = array[0];
+        for (int i = 1; i < len; i++) {
+            if (array[i] != null && max < array[i]) {
+                max = array[i];
+            }
+        }
+
+        int maxL = String.valueOf(max).length();//获取素组中最长元素的长度
+        int bit = new Double(Math.pow(10, maxL - 1)).intValue();
+        int[][] t = new int[10][len];   //准备10个用于存放0-9的桶，每个桶最多存放数组长度len个元素
+        int[] num = new int[len];   // 记录每个桶中存入元素的个数
+
+        for (int a : array) { //按最高位入桶
+            int m = (a / bit) % 10;
             t[m][num[m]] = a;
             num[m]++;
         }
-        int c = 0;
-        for(int i = 0; i < n; i++){
-            if(num[i] == 1){        //如果桶中只有一个数则直接取出
-                array[c++] = t[i][0];
-            }else if(num[i] > 1){   //如果桶中不止一个数，则另存如数组B递归
-                Integer[] B = new Integer[num[i]];
-                for(int j = 0;j < num[i];j++){
-                    B[j] = t[i][j];
-                    sort(B,num[i]);   //递归方法
+
+        int index = 0;
+        for (int i = 0; i < len; i++) {
+            if (num[i] == 1) {  // 如果桶中只有一个数则直接取出
+                array[index++] = t[i][0];
+            } else if (num[i] > i) { //如果桶中不止一个数，则另存入数组arr2，递归
+                Integer[] arr2 = new Integer[num[i]];
+                for (int j = 0; j < num[i]; j++) {
+                    arr2[j] = t[i][j];
+                    msdSort(arr2); // 递归方法
                 }
             }
         }
