@@ -47,7 +47,7 @@ public class SortTest {
     }
 
     public static void radixSort() {
-        run(SortFactory.getSort(SortType.MSD),true);
+        //run(SortFactory.getSort(SortType.MSD),true);
         run(SortFactory.getSort(SortType.LSD),true);
     }
 

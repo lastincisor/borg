@@ -39,7 +39,7 @@ public class RadixSortStrategy implements SortStrategy {
         int mod = 10, div = 1;
         List<List<Integer>> bucketList = new ArrayList<>();
         for (int i = 0; i < 10; i++){
-            bucketList.add(new ArrayList<Integer>());
+            bucketList.add(new ArrayList<>());
         }
         for (int i = 0; i < maxDigit; i++, mod *= 10, div *= 10) {
             for (int j = 0; j < array.length; j++) {

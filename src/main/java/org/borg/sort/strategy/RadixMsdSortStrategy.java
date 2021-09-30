@@ -89,20 +89,22 @@ public class RadixMsdSortStrategy implements SortStrategy {
 
         int maxL = String.valueOf(max).length();//获取素组中最长元素的长度
         int bit = new Double(Math.pow(10, maxL - 1)).intValue();
-        int[][] t = new int[10][len];   //准备10个用于存放0-9的桶，每个桶最多存放数组长度len个元素
-        int[] num = new int[len];   // 记录每个桶中存入元素的个数
+        Integer[][] t = new Integer[10][len];   //准备10个用于存放0-9的桶，每个桶最多存放数组长度len个元素
+        Integer[] num = new Integer[len];   // 记录每个桶中存入元素的个数
 
-        for (int a : array) { //按最高位入桶
-            int m = (a / bit) % 10;
-            t[m][num[m]] = a;
-            num[m]++;
+        for (Integer a : array) { //按最高位入桶
+            if(a != null){
+                int m = (a / bit) % 10;
+                t[m][num[m]] = a;
+                num[m]++;
+            }
         }
 
         int index = 0;
         for (int i = 0; i < len; i++) {
-            if (num[i] == 1) {  // 如果桶中只有一个数则直接取出
+            if (num[i] == 1) {                          // 如果桶中只有一个数则直接取出
                 array[index++] = t[i][0];
-            } else if (num[i] > i) { //如果桶中不止一个数，则另存入数组arr2，递归
+            } else if (num[i] > i) {                     //如果桶中不止一个数，则另存入数组arr2，递归
                 Integer[] arr2 = new Integer[num[i]];
                 for (int j = 0; j < num[i]; j++) {
                     arr2[j] = t[i][j];
