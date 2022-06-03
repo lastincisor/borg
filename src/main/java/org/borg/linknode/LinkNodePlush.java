@@ -21,7 +21,7 @@ public class LinkNodePlush {
         int carry = 0;
         ListNode ans = null;
         while (!stack1.isEmpty() || !stack2.isEmpty() || carry != 0) {
-            int a = stack1.isEmpty() ? 0 : stack1.pop()Q
+            int a = stack1.isEmpty() ? 0 : stack1.pop();
             int b = stack2.isEmpty() ? 0 : stack2.pop();
             int cur = a + b + carry;
             carry = cur / 10;
