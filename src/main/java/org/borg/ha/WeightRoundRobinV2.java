@@ -20,22 +20,31 @@ public class WeightRoundRobinV2 {
     public static String getServer(){
 
         int sumWeight = 0;
-        for (Integer weight : ServerIps.WEIGHT_MAP.values()){
-            sumWeight += weight;
-        }
+//        for (Integer weight : ServerIps.WEIGHT_MAP.values()){
+//            sumWeight += weight;
+//        }
 
-        for (Weight weight : weightMap.values()){
-            weight.setCurrentWeight(weight.getCurrentWeight() + weight.getWeight());
-        }
+//        for (Weight weight : weightMap.values()){
+//            System.out.print(weight.getCurrentWeight() + "+" + weight.getWeight() + "=");
+//            weight.setCurrentWeight(weight.getCurrentWeight() + weight.getWeight());
+//            System.out.println(weight.getCurrentWeight());
+//        }
 
 
         Weight maxCurrentWeight = null;
         for (Weight weight : weightMap.values()){
+            sumWeight += weight.getWeight();
+
+            System.out.print(weight.getCurrentWeight() + "+" + weight.getWeight() + "=");
+            weight.setCurrentWeight(weight.getCurrentWeight() + weight.getWeight());
+            System.out.println(weight.getCurrentWeight());
+
             if(maxCurrentWeight == null || maxCurrentWeight.getCurrentWeight() < weight.getCurrentWeight()){
                 maxCurrentWeight = weight;
             }
         }
         maxCurrentWeight.setCurrentWeight(maxCurrentWeight.getCurrentWeight() - sumWeight);
+        System.out.println(maxCurrentWeight.toString());
         return maxCurrentWeight.getIp();
     }
 

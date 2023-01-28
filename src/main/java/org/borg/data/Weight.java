@@ -37,4 +37,14 @@ public class Weight {
     public void setCurrentWeight(Integer currentWeight) {
         this.currentWeight = currentWeight;
     }
+
+
+    @Override
+    public String toString() {
+        return "Weight{" +
+                "ip='" + ip + '\'' +
+                ", weight=" + weight +
+                ", currentWeight=" + currentWeight +
+                '}';
+    }
 }
